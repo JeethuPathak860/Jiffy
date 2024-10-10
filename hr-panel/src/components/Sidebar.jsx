@@ -30,7 +30,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Sidebar = () => {
-  const [activeSection, setActiveSection] = useState(""); // Track the currently active section
+  const [activeSection, setActiveSection] = useState("Dashboard"); // Track the currently active section
 
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: faHome },
