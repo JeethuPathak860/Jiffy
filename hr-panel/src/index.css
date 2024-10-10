@@ -1,4 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+    
+    .scrollbar-thin {
+      scrollbar-width: thin; /* Firefox */
+    }
+    .scrollbar-thumb-rounded {
+      scrollbar-color: #c4c4c4 #f1f1f1; /* Firefox thumb and track colors */
+    }
+    .scrollbar-thumb-rounded::-webkit-scrollbar {
+      width: 6px; /* Chrome, Safari, Edge */
+    }
+    .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+      background-color: #c4c4c4; /* Scrollbar thumb color */
+      border-radius: 10px; /* Scrollbar thumb rounded */
+    }
+    .scrollbar-thumb-rounded::-webkit-scrollbar-track {
+      background-color: #f1f1f1; /* Scrollbar track color */
+    }
+  }
+  
 

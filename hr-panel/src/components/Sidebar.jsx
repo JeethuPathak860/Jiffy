@@ -81,8 +81,8 @@ const Sidebar = () => {
         <img src={logo} alt="Logo" className="w-30 h-10" />
       </div>
 
-      {/* Menu */}
-      <div className="flex-1 overflow-y-auto">
+      {/* Scrollable Menu & Let's Connect */}
+      <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-none">
         <ul className="mt-4">
           {menuItems.map((item, index) => (
             <li key={index} className="text-gray-600">
@@ -147,62 +147,62 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
-      </div>
 
-      {/* Social Links */}
-      <div className="mt-auto p-4">
-        <TypingAnimator
-          textArray={["Let's Connect..."]}
-          cursorColor="linear-gradient(90deg, #f36, #f90)"
-          textColor="linear-gradient(90deg, #f36, #f90)"
-          fontSize="20px"
-          loop
-          typingSpeed={100}
-          delaySpeed={1000}
-          backspace
-          dynamicDelay
-        />
-        <div className="flex justify-center mt-3 space-x-4">
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faTwitter}
-              className="text-pink-500 text-xl hover:text-blue-400 transition-colors duration-300"
-            />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faInstagram}
-              className="text-pink-500 text-xl hover:text-[#E1306C] transition-colors duration-300"
-            />
-          </a>
-          <a
-            href="https://youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faYoutube}
-              className="text-pink-500 text-xl hover:text-red-600 transition-colors duration-300"
-            />
-          </a>
-          <a
-            href="https://whatsapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon
-              icon={faWhatsapp}
-              className="text-pink-500 text-xl hover:text-green-500 transition-colors duration-300"
-            />
-          </a>
+        {/* Social Links - Scrollable */}
+        <div className="p-4">
+          <TypingAnimator
+            textArray={["Let's Connect..."]}
+            cursorColor="linear-gradient(90deg, #f36, #f90)"
+            textColor="linear-gradient(90deg, #f36, #f90)"
+            fontSize="20px"
+            loop
+            typingSpeed={100}
+            delaySpeed={1000}
+            backspace
+            dynamicDelay
+          />
+          <div className="flex justify-center mt-3 space-x-4">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faTwitter}
+                className="text-pink-500 text-xl hover:text-blue-400 transition-colors duration-300"
+              />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                className="text-pink-500 text-xl hover:text-[#E1306C] transition-colors duration-300"
+              />
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faYoutube}
+                className="text-pink-500 text-xl hover:text-red-600 transition-colors duration-300"
+              />
+            </a>
+            <a
+              href="https://whatsapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                className="text-pink-500 text-xl hover:text-green-500 transition-colors duration-300"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>

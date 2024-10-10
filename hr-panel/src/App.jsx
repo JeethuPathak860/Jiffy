@@ -20,12 +20,15 @@ import Chat from "./pages/Chat";
 import LiveLocation from "./pages/LiveLocation";
 import PersonalInformation from "./pages/PersonalInformation";
 import ModifyTask from "./pages/ModifyTask";  
+import HolidaysList from "./pages/HolidaysList";
+import HolidayByPolicy from "./pages/HolidayByPolicy";
+import ManageLeave from "./pages/MangeLeave";
 
 export default function App() {
 
   return (
     <Router>
-      <div className="flex h-screen bg-gray-300 ">
+      <div className="flex h-screen bg-gray-300  ">
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Navbar />
@@ -50,6 +53,9 @@ export default function App() {
               <Route path="/personal-information" element={<PersonalInformation />} /> 
               <Route path="/modify-task/view" element={<ModifyTask />} />
               <Route path="/modify-task/edit" element={<ModifyTask />} />
+              <Route path="/company-details/leave-policy/holidays" element={<HolidaysList />} />
+              <Route path="/company-details/leave-policy/policy" element={<HolidayByPolicy />} />
+              <Route path="/company-details/leave-policy/manage-leave" element={<ManageLeave />} />
 
 
             </Routes>

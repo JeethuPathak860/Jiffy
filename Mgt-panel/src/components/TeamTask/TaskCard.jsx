@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { MdOutlineCalendarToday } from "react-icons/md";
-import { motion } from "framer-motion";
 import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useNavigate } from "react-router-dom"; // Assuming you're using React Router
 
