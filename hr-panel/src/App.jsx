@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar"; 
 import Dashboard from "./pages/Dashboard";
@@ -23,6 +23,7 @@ import ModifyTask from "./pages/ModifyTask";
 import HolidaysList from "./pages/HolidaysList";
 import HolidayByPolicy from "./pages/HolidayByPolicy";
 import ManageLeave from "./pages/MangeLeave";
+import RequirementsList from "./pages/RequirementsList";
 
 export default function App() {
 
@@ -34,6 +35,8 @@ export default function App() {
           <Navbar />
           <div className="flex-1 p-4 pt-16 pl-6 overflow-y-auto">
             <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/recruitment" element={<Recruitment />} />
               <Route path="/my-task" element={<MyTask todoCount={2} inProgressCount={0} completedCount={10} />} />
@@ -53,6 +56,7 @@ export default function App() {
               <Route path="/personal-information" element={<PersonalInformation />} /> 
               <Route path="/modify-task/view" element={<ModifyTask />} />
               <Route path="/modify-task/edit" element={<ModifyTask />} />
+              <Route path="/req-list" element={<RequirementsList />} /> 
               <Route path="/company-details/leave-policy/holidays" element={<HolidaysList />} />
               <Route path="/company-details/leave-policy/policy" element={<HolidayByPolicy />} />
               <Route path="/company-details/leave-policy/manage-leave" element={<ManageLeave />} />

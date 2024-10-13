@@ -12,8 +12,9 @@ import {
   FaMoon,
   FaCloudMoon,
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom"; 
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css"; // Retaining basic calendar styles
+import "react-calendar/dist/Calendar.css";
 
 const Dashboard = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
@@ -38,60 +39,73 @@ const Dashboard = () => {
   }, []);
 
   const getTimeOfDayIcon = () => {
-    if (timeOfDay === "Morning")
-      return <FaSun className="text-6xl text-yellow-400 animate-pulse" />;
-    if (timeOfDay === "Afternoon")
-      return <FaCloudSun className="text-6xl text-orange-500 animate-pulse" />;
-    if (timeOfDay === "Evening")
-      return <FaCloudMoon className="text-6xl text-purple-500 animate-pulse" />;
-    return <FaMoon className="text-6xl text-indigo-600 animate-pulse" />;
+    switch (timeOfDay) {
+      case "Morning":
+        return <FaSun className="text-6xl text-yellow-400 animate-pulse" />;
+      case "Afternoon":
+        return <FaCloudSun className="text-6xl text-orange-500 animate-pulse" />;
+      case "Evening":
+        return <FaCloudMoon className="text-6xl text-purple-500 animate-pulse" />;
+      default:
+        return <FaMoon className="text-6xl text-indigo-600 animate-pulse" />;
+    }
   };
 
   return (
-    <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {/* First Row of Cards */}
-      <ProgressCard
-        icon={<FaUserAlt className="text-pink-500 text-xl sm:text-2xl" />}
-        title="Registered Employees"
-        value="40"
-        description="Total Employees"
-        percentage={100}
-      />
-      <ProgressCard
-        icon={<FaClock className="text-blue-500 text-xl sm:text-2xl" />}
-        title="On Time Percentage"
-        value="22.50%"
-        description="On Time Percentage"
-        percentage={22.5}
-      />
+    <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+      {/* Progress Cards */}
+      <NavLink to="/employees">
+        <ProgressCard
+          icon={<FaUserAlt className="text-pink-500 text-xl sm:text-2xl" />}
+          title="Registered Employees"
+          value="40"
+          description="Total Employees"
+          percentage={10}
+        />
+      </NavLink>
+      <NavLink to="/attendance">
+        <ProgressCard
+          icon={<FaClock className="text-blue-500 text-xl sm:text-2xl" />}
+          title="On Time Today"
+          value="9"
+          description="On Time Today"
+          percentage={40}
+        />
+      </NavLink>
       <ProgressCard
         icon={<FaUserClock className="text-yellow-500 text-xl sm:text-2xl" />}
         title="On Time Today"
         value="9"
         description="On Time Today"
-        percentage={100}
+        percentage={30}
       />
-      <ProgressCard
-        icon={<FaPause className="text-teal-500 text-xl sm:text-2xl" />}
-        title="Late Today"
-        value="8"
-        description="Late Today"
-        percentage={100}
-      />
-      <ProgressCard
-        icon={<FaBuilding className="text-gray-500 text-xl sm:text-2xl" />}
-        title="Total Departments"
-        value="8"
-        description="Total Departments"
-        percentage={100}
-      />
-      <ProgressCard
-        icon={<FaEnvelope className="text-red-500 text-xl sm:text-2xl" />}
-        title="Available Leave Types"
-        value="2"
-        description="Total Leaves"
-        percentage={100}
-      />
+      <NavLink to="/attendance">
+        <ProgressCard
+          icon={<FaPause className="text-teal-500 text-xl sm:text-2xl" />}
+          title="Late Today"
+          value="8"
+          description="Late Today"
+          percentage={50}
+        />
+      </NavLink>
+      <NavLink to="/company-details/department">
+        <ProgressCard
+          icon={<FaBuilding className="text-gray-500 text-xl sm:text-2xl" />}
+          title="Total Departments"
+          value="8"
+          description="Total Departments"
+          percentage={70}
+        />
+      </NavLink>
+      <NavLink to="/company-details/leave-policy/holidays">
+        <ProgressCard
+          icon={<FaEnvelope className="text-red-500 text-xl sm:text-2xl" />}
+          title="Available Leave Types"
+          value="2"
+          description="Total Leaves"
+          percentage={90}
+        />
+      </NavLink>
       <ProgressCard
         icon={<FaPause className="text-red-400 text-xl sm:text-2xl" />}
         title="Pending Leave Requests"
@@ -104,13 +118,13 @@ const Dashboard = () => {
         title="Approved Leaves"
         value="74"
         description="Approved Leaves"
-        percentage={100}
+        percentage={55}
       />
 
-      {/* Calendar & Time of Day Section */}
-      <div className="col-span-1 sm:col-span-2 lg:col-span-2 bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+      {/* Calendar Section */}
+      <div className="col-span-1 sm:col-span-2 md:col-span-4 bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-          {/* Calendar Section */}
+          {/* Calendar */}
           <div className="lg:w-1/2 w-full">
             <h2 className="text-xl font-semibold mb-4 text-center lg:text-left">
               Calendar
@@ -168,7 +182,7 @@ const ProgressCard = ({ icon, title, value, description, percentage }) => {
           <div
             className="h-full bg-gradient-to-r from-green-400 to-teal-400"
             style={{
-              width: `${progress}%`,
+              width: `${progress}%`, // Corrected template literal
               transition: "width 1.5s ease-in-out", // Smooth animation over 1.5 seconds
             }}
           />
