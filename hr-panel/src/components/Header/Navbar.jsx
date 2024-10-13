@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Users from "../assets/images/Users.png"; // Use your Users image
+import Users from "../../assets/images/Users.png"; // Adjusted path
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { MdOutlineMessage } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence

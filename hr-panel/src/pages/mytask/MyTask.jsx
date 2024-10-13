@@ -10,7 +10,7 @@ import {
 import { BsDot } from "react-icons/bs";
 import { MdHourglassEmpty } from "react-icons/md";
 import { motion } from "framer-motion";
-import Users from "../assets/images/Users.png"; // Ensure the path is correct
+import Users from "../../assets/images/Users.png"; // Ensure the path is correct
 
 const MyTask = ({ todoCount, inProgressCount, completedCount }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

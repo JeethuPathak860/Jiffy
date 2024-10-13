@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import profileImage from "../assets/profile-image.jpg"; // Import profile image
-import Users from "../assets/images/Users.png"; // Use your Users image
+// import profileImage from "../assets/profile-image.jpg"; // Import profile image
+import Users from "../../assets/images/Users.png"; // Use your Users image
 import { FaEdit } from "react-icons/fa"; // Icon for edit
 
 const PersonalInformation = () => {

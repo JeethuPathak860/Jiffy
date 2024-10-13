@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/jiffy-logo.svg";
+import logo from "../../assets/images/jiffy-logo.svg"; // Corrected path
 import TypingAnimator from "react-typing-animator";
 import {
   faHome,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch, FiUser, FiCircle } from "react-icons/fi"; // Import icons
-import Users from "../assets/images/Users.png"; // Use your Users image
+import Users from "../../assets/images/Users.png"; // Use your Users image
 
 const Chat = () => {
   // Sample dynamic data for user profiles

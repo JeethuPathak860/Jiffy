@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { AiOutlineMail, AiOutlineEye, AiOutlineClose } from "react-icons/ai";
 import { BsTelephone, BsPencilSquare, BsGrid, BsList } from "react-icons/bs";
 import { FaRegCommentDots } from "react-icons/fa";
-import Users from "../assets/images/Users.png";
+import Users from "../../assets/images/Users.png";
 import { motion } from "framer-motion"; 
 import EditEmployeeModal from "./EditEmployeeModal";
 import ViewEmployeeModal from "./ViewEmployeeModal";

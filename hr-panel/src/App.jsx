@@ -1,29 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar"; 
-import Dashboard from "./pages/Dashboard";
-import Recruitment from "./pages/Recruitment";
-import MyTask from "./pages/MyTask";
-import Employees from "./pages/Employees";
-import SalaryList from "./pages/SalaryList";
-import LeavePolicy from "./pages/LeavePolicy";
-import Departments from "./pages/Departments";
-import Roles from "./pages/Roles";
-import CompanyInfo from "./pages/CompanyInfo";
-import IssueTracking from "./pages/IssueTracking";
-import Attendance from "./pages/Attendance";
-import Announcement from "./pages/Announcement";
-import Events from "./pages/Events";
-import MonthlyReport from "./pages/MonthlyReport";
-import Chat from "./pages/Chat";
-import LiveLocation from "./pages/LiveLocation";
-import PersonalInformation from "./pages/PersonalInformation";
-import ModifyTask from "./pages/ModifyTask";  
-import HolidaysList from "./pages/HolidaysList";
-import HolidayByPolicy from "./pages/HolidayByPolicy";
-import ManageLeave from "./pages/MangeLeave";
-import RequirementsList from "./pages/RequirementsList";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/Header/Navbar"; 
+import Dashboard from "./pages/dashboard/Dashboard";
+import Recruitment from "./pages/requirement/Recruitment";
+import MyTask from "./pages/mytask/MyTask";
+import Employees from "./pages/employees/Employees";
+import SalaryList from "./pages/salary/SalaryList";
+import LeavePolicy from "./pages/CompanyDetails/LeavePolicy/LeavePolicy";
+import Departments from "./pages/CompanyDetails/department/Departments";
+import Roles from "./pages/CompanyDetails/role/Roles";
+import CompanyInfo from "./pages/CompanyDetails/CompanyInfo/CompanyInfo";
+import IssueTracking from "./pages/IssueTracking/IssueTracking";
+import Attendance from "./pages/Attendance/Attendance";
+import Announcement from "./pages/Announcements/Announcement";
+import Events from "./pages/Events/Events";
+import MonthlyReport from "./pages/MonthlyReport/MonthlyReport";
+import Chat from "./pages/Chat/Chat";
+import LiveLocation from "./pages/LiveLocation/LiveLocation";
+import PersonalInformation from "./pages/UserProfile/PersonalInformation";
+import ModifyTask from "./pages/mytask/ModifyTask";  
+import HolidaysList from "./pages/CompanyDetails/LeavePolicy/HolidaysList";
+import HolidayByPolicy from "./pages/CompanyDetails/LeavePolicy/HolidayByPolicy";
+import ManageLeave from "./pages/CompanyDetails/LeavePolicy/MangeLeave";
+import RequirementsList from "./pages/requirement/RequirementsList";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
 
@@ -60,10 +61,9 @@ export default function App() {
               <Route path="/company-details/leave-policy/holidays" element={<HolidaysList />} />
               <Route path="/company-details/leave-policy/policy" element={<HolidayByPolicy />} />
               <Route path="/company-details/leave-policy/manage-leave" element={<ManageLeave />} />
-
-
             </Routes>
           </div>
+          {/* <Footer/> */}
         </div>
       </div>
     </Router>
