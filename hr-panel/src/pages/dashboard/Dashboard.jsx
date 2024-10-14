@@ -12,6 +12,8 @@ import {
   FaMoon,
   FaCloudMoon,
 } from "react-icons/fa";
+import { FaUsersGear } from "react-icons/fa6";
+import { FaPercentage } from "react-icons/fa";
 import { NavLink } from "react-router-dom"; 
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -56,7 +58,7 @@ const Dashboard = () => {
       {/* Progress Cards */}
       <NavLink to="/employees">
         <ProgressCard
-          icon={<FaUserAlt className="text-pink-500 text-xl sm:text-2xl" />}
+          icon={<FaUsersGear  className="text-pink-500 text-xl sm:text-2xl" />}
           title="Registered Employees"
           value="40"
           description="Total Employees"
@@ -65,10 +67,10 @@ const Dashboard = () => {
       </NavLink>
       <NavLink to="/attendance">
         <ProgressCard
-          icon={<FaClock className="text-blue-500 text-xl sm:text-2xl" />}
-          title="On Time Today"
+          icon={<FaPercentage className="text-blue-500 text-xl sm:text-2xl" />}
+          title="On Time Percentage"
           value="9"
-          description="On Time Today"
+          description="On Time Percentage"
           percentage={40}
         />
       </NavLink>

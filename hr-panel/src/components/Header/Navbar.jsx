@@ -50,7 +50,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-300 fixed top-0 left-64 w-[calc(100%-16rem)] h-16 flex items-center justify-between px-6 shadow-md z-10">
+    <nav className="bg-gray-300  w-[calc(100%-0rem)] h-16 flex items-center justify-between px-6 shadow-md z-10">
       <div className="text-blue-900 font-semibold text-lg">Dashboard</div>
       <div className="flex items-center space-x-6">
         {/* Notifications Icon */}

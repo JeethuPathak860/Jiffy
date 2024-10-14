@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-do
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Header/Navbar"; 
 import Dashboard from "./pages/dashboard/Dashboard";
-import Recruitment from "./pages/requirement/Recruitment";
+import Recruitment from "./pages/Recruitment/Recruitment";
 import MyTask from "./pages/mytask/MyTask";
 import Employees from "./pages/employees/Employees";
 import SalaryList from "./pages/salary/SalaryList";
@@ -23,8 +23,8 @@ import ModifyTask from "./pages/mytask/ModifyTask";
 import HolidaysList from "./pages/CompanyDetails/LeavePolicy/HolidaysList";
 import HolidayByPolicy from "./pages/CompanyDetails/LeavePolicy/HolidayByPolicy";
 import ManageLeave from "./pages/CompanyDetails/LeavePolicy/MangeLeave";
-import RequirementsList from "./pages/requirement/RequirementsList";
-import Footer from "./components/Footer/Footer";
+// import RequirementsList from "./pages/Recruitment/RecruitmentList";
+// import Footer from "./components/Footer/Footer";
 
 export default function App() {
 
@@ -34,7 +34,7 @@ export default function App() {
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Navbar />
-          <div className="flex-1 p-4 pt-16 pl-6 overflow-y-auto">
+          <div className="flex-1 p-4 pt-2 pl-6 overflow-y-auto">
             <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
@@ -57,7 +57,14 @@ export default function App() {
               <Route path="/personal-information" element={<PersonalInformation />} /> 
               <Route path="/modify-task/view" element={<ModifyTask />} />
               <Route path="/modify-task/edit" element={<ModifyTask />} />
-              <Route path="/req-list" element={<RequirementsList />} /> 
+              <Route path="/recruitment/recruitment-list" element={<Recruitment />} />
+              <Route path="/recruitment/receivedapplication-list" element={<Recruitment />} /> 
+              <Route path="/recruitment/todayinterview" element={<Recruitment />} /> 
+              <Route path="/recruitment/interview-list" element={<Recruitment />} /> 
+              <Route path="//recruitment/selected" element={<Recruitment />} /> 
+              <Route path="/recruitment/rejected" element={<Recruitment />} />
+              <Route path="/recruitment/hired" element={<Recruitment />} /> 
+
               <Route path="/company-details/leave-policy/holidays" element={<HolidaysList />} />
               <Route path="/company-details/leave-policy/policy" element={<HolidayByPolicy />} />
               <Route path="/company-details/leave-policy/manage-leave" element={<ManageLeave />} />

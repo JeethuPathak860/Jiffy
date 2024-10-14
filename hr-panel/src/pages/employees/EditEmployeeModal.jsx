@@ -3,8 +3,30 @@ import { motion } from 'framer-motion';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const EditEmployeeModal = ({ isOpen, onClose, employeeData }) => {
-  const [formData, setFormData] = useState(employeeData);
   const fileInputRef = useRef(null);
+
+  // Initialize formData with defaults if employeeData is undefined
+  const [formData, setFormData] = useState({
+    name: employeeData?.name || '',
+    dob: employeeData?.dob || '',
+    phone: employeeData?.phone || '',
+    email: employeeData?.email || '',
+    password: employeeData?.password || '',
+    type: employeeData?.type || '',
+    joiningDate: employeeData?.joiningDate || '',
+    department: employeeData?.department || '',
+    accountNumber: employeeData?.accountNumber || '',
+    accessControl: employeeData?.accessControl || {
+      Management: false,
+      Accounts: false,
+      Sales: false,
+      Admin: false,
+      'Project Manager': false,
+      Employee: false,
+      Client: false,
+      All: false,
+    },
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;

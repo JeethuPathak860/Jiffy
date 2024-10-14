@@ -1,84 +1,59 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const ViewEmployeeModal = ({ isOpen, onClose, employeeData }) => {
-    console.log("eguyuykdsfa")
-    console.log(isOpen)
+  if (!isOpen || !employeeData) return null;
+
   return (
-    isOpen && (
-      <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-        <div
-          className="bg-white w-full max-w-xl mx-4 sm:mx-auto p-8 rounded-lg overflow-hidden relative"
-          initial={{ scale: 0.8, y: 50 }}
-          animate={{ scale: 1, y: 0 }}
-          exit={{ scale: 0.8, y: 50 }}
-          transition={{ type: 'spring', stiffness: 300 }}
+    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center z-50">
+      <div className="bg-white w-full max-w-sm mx-4 sm:mx-auto p-6 rounded-lg shadow-lg relative"> {/* Reduced max-w-md to max-w-sm and adjusted padding */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-semibold">Employee Information</h2>
-            <button onClick={onClose} className="text-gray-500 hover:text-gray-800">
-              <AiOutlineClose size={24} />
-            </button>
-          </div>
+          <AiOutlineClose size={24} />
+        </button>
 
-          <div className="h-[70vh] overflow-y-auto pr-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Displaying Employee Details */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Full Name</label>
-                <p className="text-sm">{employeeData.name}</p>
-              </div>
+        <div className="text-center mb-4">
+          <h2 className="text-xl font-semibold text-gray-800">
+            {employeeData.name}/{employeeData.empId}
+          </h2>
+        </div>
 
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Date of Birth</label>
-                <p className="text-sm">{employeeData.dob}</p>
-              </div>
+        <div className="flex justify-center mb-4">
+          <img
+            src={employeeData.profileImage}
+            alt={`${employeeData.name}'s profile`}
+            className="w-24 h-24 rounded-full object-cover border-4 border-purple-500 shadow-lg" // Reduced size
+          />
+        </div>
 
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Phone</label>
-                <p className="text-sm">{employeeData.phone}</p>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Email</label>
-                <p className="text-sm">{employeeData.email}</p>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Type</label>
-                <p className="text-sm">{employeeData.type}</p>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Joining Date</label>
-                <p className="text-sm">{employeeData.joiningDate}</p>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Department</label>
-                <p className="text-sm">{employeeData.department}</p>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Account Number</label>
-                <p className="text-sm">{employeeData.accountNumber}</p>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium">Access Control</label>
-                <ul className="list-disc pl-5">
-                  {Object.entries(employeeData.accessControl).map(
-                    ([role, access]) =>
-                      access && <li key={role}>{role}</li>
-                  )}
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div className="bg-gray-50 rounded-lg p-4 shadow-sm space-y-2"> {/* Adjusted padding and spacing */}
+          <p className="text-lg font-bold text-purple-700">{employeeData.name}/{employeeData.empId}</p>
+          <p className="text-gray-700">
+            <strong>Date of Birth:</strong> {employeeData.dob}
+          </p>
+          <p className="text-gray-700">
+            <strong>Phone Number:</strong> {employeeData.phone}
+          </p>
+          <p className="text-gray-700">
+            <strong>Email:</strong> {employeeData.email}
+          </p>
+          <p className="text-gray-700">
+            <strong>User Type:</strong> {employeeData.type}
+          </p>
+          <p className="text-gray-700">
+            <strong>User Role:</strong> {employeeData.role}
+          </p>
+          <p className="text-gray-700">
+            <strong>Address:</strong> {employeeData.address}
+          </p>
+          <p className="text-gray-700">
+            <strong>Joined Date:</strong> {employeeData.joiningDate}
+          </p>
         </div>
       </div>
-    )
+    </div>
   );
 };
 

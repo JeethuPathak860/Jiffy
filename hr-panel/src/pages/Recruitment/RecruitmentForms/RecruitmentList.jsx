@@ -9,7 +9,7 @@ const initialRequirementsData = [
   // Add more initial data as needed
 ];
 
-const RequirementsList = () => {
+const RecruitmentList = () => {
   const [search, setSearch] = useState("");
   const [entries, setEntries] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -160,4 +160,4 @@ const RequirementsList = () => {
   );
 };
 
-export default RequirementsList;
+export default RecruitmentList;
