@@ -46,6 +46,14 @@ const IssueTracking = () => {
     }
   };
 
+  const handleRequestTypeChange = (e) => {
+    const selectedType = e.target.value;
+    setRequestType(selectedType);
+    if (selectedType) {
+      setIsModalOpen(true); // Open the modal when an option is selected
+    }
+  };
+
   const confirmDeleteIssue = (id) => {
     setConfirmationId(id);
   };
@@ -230,7 +238,7 @@ const IssueTracking = () => {
                 <label className="block text-gray-700 mb-1">Request Type *</label>
                 <select
                   value={requestType}
-                  onChange={(e) => setRequestType(e.target.value)}
+                  onChange={handleRequestTypeChange} // Update handler
                   className="border border-gray-300 rounded w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 >

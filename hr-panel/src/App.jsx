@@ -19,10 +19,12 @@ import MonthlyReport from "./pages/MonthlyReport/MonthlyReport";
 import Chat from "./pages/Chat/Chat";
 import LiveLocation from "./pages/LiveLocation/LiveLocation";
 import PersonalInformation from "./pages/UserProfile/PersonalInformation";
-import ModifyTask from "./pages/mytask/ModifyTask";  
+import ModifyTask from "./pages/mytask/ViewTask";  
 import HolidaysList from "./pages/CompanyDetails/LeavePolicy/HolidaysList";
 import HolidayByPolicy from "./pages/CompanyDetails/LeavePolicy/HolidayByPolicy";
 import ManageLeave from "./pages/CompanyDetails/LeavePolicy/MangeLeave";
+import ViewTask from "./pages/mytask/ViewTask";
+import EditTask from "./pages/mytask/EditTask";
 // import RequirementsList from "./pages/Recruitment/RecruitmentList";
 // import Footer from "./components/Footer/Footer";
 
@@ -55,8 +57,8 @@ export default function App() {
               <Route path="/chat" element={<Chat />} /> 
               <Route path="/live" element={<LiveLocation />} /> 
               <Route path="/personal-information" element={<PersonalInformation />} /> 
-              <Route path="/modify-task/view" element={<ModifyTask />} />
-              <Route path="/modify-task/edit" element={<ModifyTask />} />
+              <Route path="/modify-task/view" element={<ViewTask />} />
+              <Route path="/modify-task/edit" element={<EditTask />} />
               <Route path="/recruitment/recruitment-list" element={<Recruitment />} />
               <Route path="/recruitment/receivedapplication-list" element={<Recruitment />} /> 
               <Route path="/recruitment/todayinterview" element={<Recruitment />} /> 
@@ -65,9 +67,9 @@ export default function App() {
               <Route path="/recruitment/rejected" element={<Recruitment />} />
               <Route path="/recruitment/hired" element={<Recruitment />} /> 
 
-              <Route path="/company-details/leave-policy/holidays" element={<HolidaysList />} />
-              <Route path="/company-details/leave-policy/policy" element={<HolidayByPolicy />} />
-              <Route path="/company-details/leave-policy/manage-leave" element={<ManageLeave />} />
+              <Route path="/company-details/leave-policy/holidays" element={<LeavePolicy />} />
+              <Route path="/company-details/leave-policy/policy" element={<LeavePolicy />} />
+              <Route path="/company-details/leave-policy/manage-leave" element={<LeavePolicy />} />
             </Routes>
           </div>
           {/* <Footer/> */}

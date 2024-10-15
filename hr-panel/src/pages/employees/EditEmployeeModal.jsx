@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const EditEmployeeModal = ({ isOpen, onClose, employeeData }) => {
@@ -55,21 +54,17 @@ const EditEmployeeModal = ({ isOpen, onClose, employeeData }) => {
 
   return (
     isOpen && (
-      <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-        <div
-          className="bg-white w-full max-w-2xl mx-4 sm:mx-auto p-8 rounded-lg overflow-hidden relative"
-          initial={{ scale: 0.8, y: 50 }}
-          animate={{ scale: 1, y: 0 }}
-          exit={{ scale: 0.8, y: 50 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
+      // Changed from fixed to absolute
+      <div className="absolute inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-start z-50 overflow-y-auto">
+        <div className="bg-white w-full max-w-2xl mx-4 sm:mx-auto p-8 mt-16 rounded-lg relative">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold">Edit Employee</h2>
             <button onClick={onClose} className="text-gray-500 hover:text-gray-800">
               <AiOutlineClose size={24} />
             </button>
           </div>
-          <div className="h-[70vh] overflow-y-auto pr-4">
+
+          <div className="pr-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Full Name Field */}
               <div className="space-y-2">

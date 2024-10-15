@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-const ModifyTask = () => {
+const ViewTask = () => {
   const { state } = useLocation(); // Access task and mode from state
   const { task, mode } = state || {
     task: {
@@ -15,7 +15,7 @@ const ModifyTask = () => {
       preferredTime: "10:45 PM - 07:48 PM",
       description: "Invoice and payment Backend integration",
     },
-    mode: "edit",
+    mode: "view",
   };
 
   const navigate = useNavigate(); // Initialize navigate
@@ -55,7 +55,7 @@ const ModifyTask = () => {
           {/* Status */}
           <div className="flex justify-between items-center">
             <span className="font-semibold text-lg">Status:</span>
-            {mode === "edit" ? (
+            {mode === "view" ? (
               <select
                 value={taskStatus}
                 onChange={handleStatusChange}
@@ -109,7 +109,7 @@ const ModifyTask = () => {
           </div>
 
           {/* Image Upload */}
-          {mode === "edit" && (
+          {mode === "view" && (
             <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
               <label className="block text-sm font-medium text-gray-600 mb-2">Upload Task Images</label>
               <input
@@ -132,4 +132,4 @@ const ModifyTask = () => {
   );
 };
 
-export default ModifyTask;
+export default ViewTask;
