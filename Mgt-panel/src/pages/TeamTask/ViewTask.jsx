@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import Users from "../../assets/images/Users.png"; // Ensure the path is correct
 
-
-
-const ModifyTask = () => {
+const ViewTask = () => {
   const { state } = useLocation(); // Access task and mode from state
   const { task, mode } = state || {
     task: {
@@ -18,7 +15,7 @@ const ModifyTask = () => {
       preferredTime: "10:45 PM - 07:48 PM",
       description: "Invoice and payment Backend integration",
     },
-    mode: "edit",
+    mode: "view",
   };
 
   const navigate = useNavigate(); // Initialize navigate
@@ -42,7 +39,7 @@ const ModifyTask = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 mt-10">
+    <div className="min-h-screen flex items-center justify-center p-6 mt-10 overflow-auto">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6">
         {/* Header */}
         <div className="flex items-center mb-4">
@@ -54,11 +51,11 @@ const ModifyTask = () => {
         <hr className="border-gray-300 mb-4" />
 
         {/* Task Information */}
-        <div className="space-y-4 overflow-y-auto max-h-[60vh]">
+        <div className="space-y-4">
           {/* Status */}
           <div className="flex justify-between items-center">
             <span className="font-semibold text-lg">Status:</span>
-            {mode === "edit" ? (
+            {mode === "view" ? (
               <select
                 value={taskStatus}
                 onChange={handleStatusChange}
@@ -112,7 +109,7 @@ const ModifyTask = () => {
           </div>
 
           {/* Image Upload */}
-          {mode === "edit" && (
+          {mode === "view" && (
             <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
               <label className="block text-sm font-medium text-gray-600 mb-2">Upload Task Images</label>
               <input
@@ -135,4 +132,4 @@ const ModifyTask = () => {
   );
 };
 
-export default ModifyTask;
+export default ViewTask;

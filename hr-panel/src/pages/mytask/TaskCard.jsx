@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import { MdOutlineCalendarToday } from "react-icons/md";
-import { motion } from "framer-motion";
-import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
-import { useNavigate } from "react-router-dom"; // Assuming you're using React Router
-
 const TaskCard = ({ task }) => {
   const { title, startDate, endDate, progress, avatars } = task;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const navigate = useNavigate();  // Use navigation hook for routing
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
@@ -22,7 +16,7 @@ const TaskCard = ({ task }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 w-full max-w-md mx-auto">
+    <div className="bg-white rounded-2xl shadow-md p-4 w-full max-w-md mx-auto">
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-lg font-semibold">{title}</h3>
         <div className="relative">
@@ -30,13 +24,8 @@ const TaskCard = ({ task }) => {
             <span className="text-lg">•••</span>
           </button>
           {isDropdownOpen && (
-            <div
-              className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg z-10"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-            >
-              <div className="flex flex-col rounded-xl overflow-hidden">
+            <div className="absolute right-0 mt-2 w-32 bg-white rounded-2xl shadow-lg z-10">
+              <div className="flex flex-col rounded-2xl overflow-hidden">
                 <button onClick={handleView} className="flex items-center p-2 hover:bg-gray-100">
                   <AiOutlineEye className="mr-2 text-gray-600" />
                   <span className="text-gray-800">View</span>
@@ -69,10 +58,7 @@ const TaskCard = ({ task }) => {
 
       {/* Progress Bar */}
       <div className="w-full bg-gray-200 h-1 rounded-full mb-4">
-        <div
-          className="bg-orange-500 h-1 rounded-full"
-          style={{ width: `${progress}%` }}
-        ></div>
+        <div className="bg-orange-500 h-1 rounded-full" style={{ width: `${progress}%` }}></div>
       </div>
 
       {/* Avatars */}

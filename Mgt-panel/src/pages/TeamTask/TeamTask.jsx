@@ -11,7 +11,7 @@ import {
 import { BsDot } from "react-icons/bs";
 import Users from "../../assets/images/Users.png"; // Adjust path as needed
 
-const MyTask = ({ todoCount, inProgressCount, completedCount }) => {
+const TeamTask = ({ todoCount, inProgressCount, completedCount }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     projectName: "",
@@ -184,7 +184,7 @@ const MyTask = ({ todoCount, inProgressCount, completedCount }) => {
       {/* Task Status Section */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* To Do Card */}
-        <div>
+        <div className="max-w-xs sm:max-w-sm">
           <div className="bg-white flex items-center justify-between p-4 rounded-xl shadow-lg transition-transform hover:scale-105 duration-200">
             <div className="flex items-center space-x-2 flex-wrap">
               <ReceiptLongIcon className="text-red-600" size={24} />
@@ -209,11 +209,11 @@ const MyTask = ({ todoCount, inProgressCount, completedCount }) => {
         </div>
 
         {/* In Progress Card */}
-        <div>
+        <div className="max-w-xs sm:max-w-sm">
           <div className="bg-white flex items-center justify-between p-4 rounded-xl shadow-lg transition-transform hover:scale-105 duration-200">
             <div className="flex items-center space-x-2 flex-wrap">
               <ImSpinner
-                className="text-blue-600 animate-spin-slow"
+                className="text-blue-600 animate-spin-slow "
                 size={24}
               />
               <span className="text-blue-600 font-semibold text-sm truncate">
@@ -237,7 +237,7 @@ const MyTask = ({ todoCount, inProgressCount, completedCount }) => {
         </div>
 
         {/* Completed Card */}
-        <div>
+        <div className="max-w-xs sm:max-w-sm">
           <div className="bg-white flex items-center justify-between p-4 rounded-xl shadow-lg transition-transform hover:scale-105 duration-200">
             <div className="flex items-center space-x-2 flex-wrap">
               <EventAvailableIcon className="text-green-600" size={24} />
@@ -523,4 +523,4 @@ const MyTask = ({ todoCount, inProgressCount, completedCount }) => {
   );
 };
 
-export default MyTask;
+export default TeamTask;
