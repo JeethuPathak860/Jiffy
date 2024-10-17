@@ -1,211 +1,168 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // for back navigation
+import React, { useEffect, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai"; // Close icon
+import { FiCheck } from "react-icons/fi"; // Check icon for selected members
 
-const EditTeam = () => {
-  const navigate = useNavigate();
+function EditTeam({ initialData, onClose }) {
+  const [formData, setFormData] = useState(initialData);
+  const [focusedField, setFocusedField] = useState(null);
+  const [leaders] = useState(["User A", "User B", "User C"]); // Sample team leaders
+  const [members] = useState(["User A", "User B", "User C", "User D"]); // Sample members
+  const [selectedMembers, setSelectedMembers] = useState([]);
 
-  const [formData, setFormData] = useState({
-    projectName: '',
-    module: 'HR', 
-    taskName: '',
-    assignee: '',
-    startDate: '',
-    dueDate: '',
-    startTime: '',
-    dueTime: '',
-    type: 'Bug',
-    description: '',
-    checklist: '',
-    attachment: ''
-  });
+  useEffect(() => {
+    setFormData(initialData);
+  }, [initialData]);
 
   const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleMembersChange = (member) => {
+    setSelectedMembers((prevSelected) =>
+      prevSelected.includes(member)
+        ? prevSelected.filter((m) => m !== member)
+        : [...prevSelected, member]
+    );
+    setFormData((prevData) => ({
+      ...prevData,
+      members: selectedMembers,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted data: ", formData);
+    console.log("Updated Team Data:", formData);
+    onClose();
   };
 
-  const handleBack = () => {
-    navigate(-1); // Navigates back to the previous page
+  const handleFocus = (field) => {
+    setFocusedField(field);
+  };
+
+  const handleBlur = () => {
+    setFocusedField(null);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <div className="bg-white shadow-md rounded-md w-full max-w-3xl">
-        <div className="flex justify-between p-4 border-b">
-          <button onClick={handleBack} className="text-blue-500 hover:underline">
-            &#8592; Back
-          </button>
-          <h1 className="text-xl font-semibold text-center">Edit Task Details</h1>
+    <div className="bg-white w-full max-w-5xl mx-auto p-8 rounded-lg relative overflow-auto min-h-[80vh]">
+      <button onClick={onClose} className="absolute top-4 right-4">
+        <AiOutlineClose size={24} />
+      </button>
+      <h2 className="text-lg font-semibold mb-6">Edit Team</h2>
+      <form onSubmit={handleSubmit}>
+        {/* Team Name */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium">Team Name</label>
+          <input
+            type="text"
+            name="teamName"
+            value={formData.teamName}
+            onChange={handleInputChange}
+            placeholder="Team Name"
+            required
+            onFocus={() => handleFocus("teamName")}
+            onBlur={handleBlur}
+            className={`w-full border rounded-md p-3 text-sm ${
+              focusedField === "teamName"
+                ? "border-none outline outline-2 outline-[#3D3399] shadow-lg"
+                : "border-gray-300"
+            }`}
+          />
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 overflow-y-auto">
-          {/* Project Name */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Project Name*</label>
-            <input 
-              type="text" 
-              name="projectName" 
-              value={formData.projectName} 
-              onChange={handleInputChange} 
-              className="mt-1 p-2 block w-full border rounded-md"
-              required 
-            />
-          </div>
+        {/* Select Team Leader */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium">Select Team Leader</label>
+          <select
+            name="teamLeader"
+            onChange={handleInputChange}
+            className={`w-full border rounded-md p-3 text-sm ${
+              focusedField === "teamLeader"
+                ? "border-none outline outline-2 outline-[#3D3399] shadow-lg"
+                : "border-gray-300"
+            }`}
+            onFocus={() => handleFocus("teamLeader")}
+            onBlur={handleBlur}
+            required
+          >
+            <option value="" disabled>
+              Select Team Leader
+            </option>
+            {leaders.map((leader, index) => (
+              <option key={index} value={leader}>
+                {leader}
+              </option>
+            ))}
+          </select>
+        </div>
 
-          {/* Select Module */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Select Module*</label>
-            <select 
-              name="module" 
-              value={formData.module} 
-              onChange={handleInputChange} 
-              className="mt-1 p-2 block w-full border rounded-md">
-              <option value="HR">HR</option>
-              <option value="Employee">Employee</option>
-              <option value="Project Manager">Project Manager</option>
-            </select>
-          </div>
+        {/* Select Team Members */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium">Select Team Members</label>
+          <div
+            className={`border rounded-md p-3 text-sm ${
+              focusedField === "members"
+                ? "border-none outline outline-2 outline-[#3D3399] shadow-lg"
+                : "border-gray-300"
+            }`}
+            onFocus={() => handleFocus("members")}
+            onBlur={handleBlur}
+          >
+            <div
+              className="cursor-pointer"
+              onClick={() =>
+                document.getElementById("members-dropdown").classList.toggle("hidden")
+              }
+            >
+              {selectedMembers.length === 0 ? (
+                "Select Team Members"
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {selectedMembers.map((member, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center bg-[#4CAF50] text-white px-2 py-1 rounded-full"
+                    >
+                      {member} <FiCheck className="ml-1" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
-          {/* Task Name */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Task Name*</label>
-            <input 
-              type="text" 
-              name="taskName" 
-              value={formData.taskName} 
-              onChange={handleInputChange} 
-              className="mt-1 p-2 block w-full border rounded-md"
-              required 
-            />
-          </div>
-
-          {/* Assign, Actual Start Date, Actual Due Date */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-gray-700 font-semibold">Assign*</label>
-              <select 
-                name="assignee" 
-                value={formData.assignee} 
-                onChange={handleInputChange} 
-                className="mt-1 p-2 block w-full border rounded-md">
-                <option value="Divya MN">Divya MN</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold">Actual Start Date*</label>
-              <input 
-                type="date" 
-                name="startDate" 
-                value={formData.startDate} 
-                onChange={handleInputChange} 
-                className="mt-1 p-2 block w-full border rounded-md"
-                required 
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold">Actual Due Date*</label>
-              <input 
-                type="date" 
-                name="dueDate" 
-                value={formData.dueDate} 
-                onChange={handleInputChange} 
-                className="mt-1 p-2 block w-full border rounded-md"
-                required 
-              />
-            </div>
-          </div>
-
-          {/* Select Start Time, Select Due Time, Type */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-gray-700 font-semibold">Select Start Time</label>
-              <input 
-                type="time" 
-                name="startTime" 
-                value={formData.startTime} 
-                onChange={handleInputChange} 
-                className="mt-1 p-2 block w-full border rounded-md"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold">Select Due Time</label>
-              <input 
-                type="time" 
-                name="dueTime" 
-                value={formData.dueTime} 
-                onChange={handleInputChange} 
-                className="mt-1 p-2 block w-full border rounded-md"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold">Type*</label>
-              <select 
-                name="type" 
-                value={formData.type} 
-                onChange={handleInputChange} 
-                className="mt-1 p-2 block w-full border rounded-md">
-                <option value="Bug">Bug</option>
-                <option value="Task">Task</option>
-                <option value="Improvement">Improvement</option>
-              </select>
+            <div id="members-dropdown" className="hidden mt-3">
+              {members.map((member, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleMembersChange(member)}
+                  className={`p-2 border-b hover:bg-gray-100 cursor-pointer ${
+                    selectedMembers.includes(member)
+                      ? "text-[#4CAF50]"
+                      : "text-gray-800"
+                  }`}
+                >
+                  {member}
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Description */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Description</label>
-            <textarea 
-              name="description" 
-              value={formData.description} 
-              onChange={handleInputChange} 
-              className="mt-1 p-2 block w-full border rounded-md resize-none"
-              rows={5}
-            ></textarea>
-          </div>
-
-          {/* Checklist */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Checklist (Enter Numbers)</label>
-            <input 
-              type="number" 
-              name="checklist" 
-              value={formData.checklist} 
-              onChange={handleInputChange} 
-              className="mt-1 p-2 block w-full border rounded-md"
-            />
-          </div>
-
-          {/* Attachments */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Upload media (Max size 5MB)</label>
-            <input 
-              type="file" 
-              name="attachment" 
-              onChange={(e) => setFormData({ ...formData, attachment: e.target.files[0] })}
-              className="mt-1 p-2 block w-full border rounded-md"
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div className="flex justify-center">
-            <button 
-              type="submit" 
-              className="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="bg-[#3D3399] text-white py-2 px-4 rounded-lg border border-[#3D3399] shadow-lg hover:bg-white hover:text-[#2B1F7D] hover:font-bold transition duration-200 text-sm w-full sm:w-auto"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
     </div>
   );
-};
+}
 
 export default EditTeam;

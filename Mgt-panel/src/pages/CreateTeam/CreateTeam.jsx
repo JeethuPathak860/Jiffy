@@ -185,6 +185,7 @@ const CreateTeam = ({ todoCount, inProgressCount, completedCount }) => {
                       onChange={handleInputChange}
                       onFocus={() => handleFocus('teamMember')}
                       onBlur={handleBlur}
+                      multiple
                       className={`w-full border rounded-md p-2 text-sm ${focusedField === 'teamMember' ? 'border-none outline outline-2 outline-[#3D3399] shadow-[0_0_15px_5px_rgba(61,51,153,0.5)]' : 'border-gray-300'}`}
                       required
                     >
@@ -212,6 +213,7 @@ const CreateTeam = ({ todoCount, inProgressCount, completedCount }) => {
         )}
       </AnimatePresence>
     </div>
+    
   );
 };
 

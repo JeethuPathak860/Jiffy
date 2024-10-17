@@ -73,7 +73,7 @@ const Sidebar = () => {
     }
     scrollTimeout.current = setTimeout(() => {
       setScrolling(false);
-    }, 1000);
+    }, 6000);
   };
 
   useEffect(() => {

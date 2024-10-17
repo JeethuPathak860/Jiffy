@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MyTasks from "./pages/MyTasks/MyTasks";
 import TeamTask from "./pages/TeamTask/TeamTask";
@@ -8,9 +8,11 @@ import CreateTeamCards from "./pages/CreateTeam/CreateTeamCards";
 import EditTeam from "./pages/CreateTeam/EditTeam";
 import Sidebar from "./components/Sidebar/Sidebar"; // Ensure this is the correct path
 import Navbar from "./components/Header/Navbar"; // Ensure this is the correct path
+import EditTask from "./pages/TeamTask/EditTask";
+import PersonalInformation from "../src/pages/UserProfile/PersonalInformation";
 
 export default function App() {
-  const teamsData = [
+  const [teams, setTeams]  = useState([
     {
       teamName: 'Algorithm Avengers',
       progress: 100,
@@ -26,7 +28,7 @@ export default function App() {
       progress: 100,
       members: ['Bipin Chavan', 'M.S.Purnima', 'Meena Mani', 'Vaibhavi Dhadde'],
     },
-  ];
+  ]);
 
   return (
     <Router>
@@ -40,8 +42,11 @@ export default function App() {
               <Route path="/create-team" element={<CreateTeam />} />
               <Route path="/team-task" element={<TeamTask todoCount={2} inProgressCount={0} completedCount={10} />} />
               <Route path="/modify-task/view" element={<ViewTask />} />
-              <Route path="/modify-task/edit" element={<EditTeam />} />
-              <Route path="/team-card" element={<CreateTeamCards teams={teamsData} />} />
+              <Route path="/modify-task/edit" element={<EditTask />} />
+              <Route path="/team-task/edit" element={<EditTeam />} />
+              <Route path="/team-card" element={<CreateTeamCards teams={teams} setTeams={setTeams}/>} />
+              <Route path="/personal-information" element={<PersonalInformation />} /> 
+
             </Routes>
           </div>
         </div>
